@@ -17,6 +17,10 @@ Step 4 :- Configuring Nginx to Use the PHP Processor
 Step 5 :- Creating a PHP File to Test Configuration 
 '
 
+# Variables Declaration
+DB_PASS='root'
+DB_USER='root'
+
 # Check Weather The Script Is Execute By Root User Or Not
 if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
 
@@ -100,7 +104,6 @@ nginx -t
 systemctl reload nginx
 
 # Step 5 :- Creating a PHP File to Test Configuration 
-
 cat > /var/www/html/index.php <<EOF
 <?php
 phpinfo();
