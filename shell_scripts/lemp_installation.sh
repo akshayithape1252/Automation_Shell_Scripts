@@ -100,8 +100,11 @@ EOF
 # Test your new configuration file for syntax errors
 nginx -t
 
+# Reload PHP-FPM Service
+service php$PHP_VERSION-fpm restart
+
 # Reload Nginx Web Server 
-systemctl reload nginx
+nginx -s reload
 
 # Step 5 :- Creating a PHP File to Test Configuration 
 cat > /var/www/html/index.php <<EOF
