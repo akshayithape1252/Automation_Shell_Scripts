@@ -1,7 +1,9 @@
 #!/bin/bash
 
 :'
-The LEMP Stack(Linux,Nginx,Mysql,PHP) it is a collection of software that can be used for dynamic web pages and web application. In LEMP stack, L for Linux operating system, E for Nginx web server, M for Mysql database server and P for PHP lang.So we will used this script for automating the LEMP stack installation.
+The LEMP Stack(Linux,Nginx,Mysql,PHP) it is a collection of software that can be used for dynamic web pages and web 
+application. In LEMP stack, L for Linux operating system, E for Nginx web server, M for Mysql database server and 
+P for PHP lang.So we will used this script for automating the LEMP stack installation.
 
 Prerequisites :-
 1. You required the root access to execute this shell script 
