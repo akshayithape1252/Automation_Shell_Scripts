@@ -39,6 +39,7 @@ if [ $(dpkg-query -W -f='${Status}' nginx  2>/dev/null | grep -c "ok installed")
 then
         echo "Installing Nginx "
         apt-get install nginx -y;
+	service nginx start
 else
         echo "Nginx is already installed"
 fi
@@ -51,6 +52,7 @@ if [ $(dpkg-query -W -f='${Status}' mysql-server mysql-client  2>/dev/null | gre
 then
         echo "Installing mysql "
         apt-get install mysql-server mysql-client -y;
+	service mysql start
 	# Set The Password Mysql User
 	mysql -u $DB_USER -p"$DB_PASS" -e "ALTER USER '$DB_USER'@'localhost' IDENTIFIED WITH mysql_native_password BY '$DB_PASS';"
 else
@@ -65,6 +67,7 @@ if [ $(dpkg-query -W -f='${Status}' php  2>/dev/null | grep -c "ok installed") -
 then
         echo "Installing PHP "
         apt-get install php-fpm php-cli php-mysql -y;
+	service php$PHP_VERSION-fpm start
 else
         echo "PHP is already installed"
 fi
