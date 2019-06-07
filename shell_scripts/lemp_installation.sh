@@ -1,21 +1,24 @@
 #!/bin/bash
 
-:'
-The LEMP Stack(Linux,Nginx,Mysql,PHP) it is a collection of software that can be used for dynamic web pages and web 
-application. In LEMP stack, L for Linux operating system, E for Nginx web server, M for Mysql database server and 
-P for PHP lang.So we will used this script for automating the LEMP stack installation.
-
-Prerequisites :-
-1. You required the root access to execute this shell script 
-
-There are Five step in LEMP installation. We see this step one by one
-
-Step 1 :- Installing The Nginx Web Server
-Step 2 :- Installing MySQL Database Server
-Step 3 :- Installing PHP 
-Step 4 :- Configuring Nginx to Use the PHP Processor
-Step 5 :- Creating a PHP File to Test Configuration 
-'
+#The LEMP Stack(Linux,Nginx,Mysql,PHP) it is a collection of software that can be used for dynamic web pages and web 
+#application. In LEMP stack, L for Linux operating system, E for Nginx web server, M for Mysql database server and 
+#P for PHP lang.So we will used this script for automating the LEMP stack installation.
+#
+#Prerequisites :-
+#1. You required the root access to execute this shell script 
+#
+#There are Five step in LEMP installation. We see this step one by one
+#
+#Step 1 :- Installing The Nginx Web Server
+#Step 2 :- Installing MySQL Database Server
+#Step 3 :- Installing PHP 
+#Step 4 :- Configuring Nginx to Use the PHP Processor
+#Step 5 :- Creating a PHP File to Test Configuration 
+#
+#Tested On:-
+#On AWS Ubuntu 16.04
+#On AWS Ubuntu 18.04
+#On Docker Ubuntu
 
 # Variables Declaration
 DB_PASS='root'
@@ -67,6 +70,7 @@ if [ $(dpkg-query -W -f='${Status}' php  2>/dev/null | grep -c "ok installed") -
 then
         echo "Installing PHP "
         apt-get install php-fpm php-cli php-mysql -y;
+	PHP_VERSION=$(php --version | head -n 1 | cut -d " " -f 2 | cut -c 1-3)
 	service php$PHP_VERSION-fpm start
 else
         echo "PHP is already installed"
